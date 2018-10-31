@@ -1,0 +1,22 @@
+# Automation-Test
+
+from selenium import webdriver
+from selenium.webdriver.support.ui import Select
+
+browser = webdriver.Chrome()
+browser.get('https://www.act-tech.io/contact')
+assert 'Contact - ARMADILLO CYBER TECH' in browser.title
+
+fullname = browser.find_element_by_name('name')
+email = browser.find_element_by_name('email')
+purpose = Select(browser.find_element_by_name('purpose'))
+message = browser.find_element_by_name('message')
+button_send = browser.find_element_by_xpath('//*[@id="jcontact-form"]/div/div[2]/div/div/button')
+
+fullname.send_keys('Quy Huynh')
+email.send_keys('quy.huynh@act-tech.io')
+message.send_keys('This is test')
+button_send.click()
+purpose.select_by_index(1)
+
+# browser.quit()
